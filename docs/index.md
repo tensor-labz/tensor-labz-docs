@@ -92,5 +92,6 @@ All development happens on `feat/*` branches → `dev`. When ready for QA, merge
 - **[Supabase](supabase/schema.md)** — database schema, RLS, auth
 - **[Lambda](lambda/overview.md)** — image service: how it works, how to deploy
 - **[Admin Panel](admin/overview.md)** — CMS admin, modules, dynamic config
+- **[Guides](guides/s3-upload-urls.md)** — S3 upload & URL workflow, admin CRUD operations
 - **[Features](features/about-us.md)** — feature-level docs (About Us page, media gallery)
 - **[Deployment](deployment/staging.md)** — staging (Firebase) and production (Amplify)

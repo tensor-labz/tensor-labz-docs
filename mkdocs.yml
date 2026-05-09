@@ -92,6 +92,9 @@ nav:
       - Content Modules: admin/modules.md
       - Dynamic Table Config: admin/table-config.md
       - Dynamic Form Config: admin/form-config.md
+  - Guides:
+      - S3 Upload & URLs: guides/s3-upload-urls.md
+      - Admin CRUD Operations: guides/crud-operations.md
   - Features:
       - About Us Page: features/about-us.md
   - Deployment:
