@@ -1,22 +1,23 @@
 site_name: Tensor Labz — Developer Docs
 site_description: End-to-end documentation for the Tensor Labz website platform
 site_url: https://tensor-labz.github.io/tensor-labz-docs/
-repo_url: https://github.com/tensor-labz/tensor-labz-docs
-repo_name: tensor-labz-docs
-edit_uri: edit/main/docs/
+repo_url: https://github.com/tensor-labz/tensor-labz-website
+repo_name: tensor-labz-website
+edit_uri: ""
+copyright: "© 2026 Tensor Labz. All rights reserved."
 
 theme:
   name: material
   palette:
     - scheme: slate
-      primary: indigo
-      accent: indigo
+      primary: light blue
+      accent: cyan
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
     - scheme: default
-      primary: indigo
-      accent: indigo
+      primary: light blue
+      accent: cyan
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
@@ -27,6 +28,7 @@ theme:
     - navigation.expand
     - navigation.path
     - navigation.top
+    - navigation.footer
     - search.highlight
     - search.suggest
     - content.code.copy
@@ -83,11 +85,15 @@ nav:
       - Overview: lambda/overview.md
       - Deployment Guide: lambda/deployment.md
       - API Reference: lambda/api-reference.md
+      - Direct S3 Upload (CLI & Console): lambda/direct-s3-upload.md
   - Admin Panel:
       - Overview: admin/overview.md
+      - Site Control: admin/site-control.md
       - Content Modules: admin/modules.md
       - Dynamic Table Config: admin/table-config.md
       - Dynamic Form Config: admin/form-config.md
+  - Features:
+      - About Us Page: features/about-us.md
   - Deployment:
       - Staging — Firebase: deployment/staging.md
       - Production — Amplify: deployment/production.md
@@ -96,3 +102,7 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/tensor-labz
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/tensoragri
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/@TENSORAGRI

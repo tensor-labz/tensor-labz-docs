@@ -6,16 +6,18 @@ Supabase RLS controls who can read and write each table. Run all policies after 
 
 ## Policy pattern
 
-| Table          | Public read | Authenticated write |
-| -------------- | ----------- | ------------------- |
-| `hero`         | ✅          | ✅                  |
-| `services`     | ✅          | ✅                  |
-| `projects`     | ✅          | ✅                  |
-| `about`        | ✅          | ✅                  |
-| `contact`      | ✅          | ✅                  |
-| `social`       | ✅          | ✅                  |
-| `table_config` | ✅          | ✅                  |
-| `form_config`  | ✅          | ✅                  |
+| Table           | Public read | Authenticated write |
+| --------------- | ----------- | ------------------- |
+| `hero`          | ✅          | ✅                  |
+| `company_info`  | ✅          | ✅                  |
+| `services`      | ✅          | ✅                  |
+| `projects`      | ✅          | ✅                  |
+| `about`         | ✅          | ✅                  |
+| `about_media`   | ✅          | ✅                  |
+| `contact`       | ✅          | ✅                  |
+| `social`        | ✅          | ✅                  |
+| `table_config`  | ✅          | ✅                  |
+| `form_config`   | ✅          | ✅                  |
 
 - **Public read** — the React frontend reads these tables without auth (anonymous browsing).
 - **Authenticated write** — only logged-in admin users can insert, update, delete.
@@ -31,6 +33,13 @@ create policy "public read hero"
 
 create policy "admin write hero"
   on hero for all using (auth.role() = 'authenticated');
+
+-- ── company_info ──────────────────────────────
+create policy "public read company_info"
+  on company_info for select using (true);
+
+create policy "admin write company_info"
+  on company_info for all using (auth.role() = 'authenticated');
 
 -- ── services ──────────────────────────────────
 create policy "public read services"
@@ -52,6 +61,14 @@ create policy "public read about"
 
 create policy "admin write about"
   on about for all using (auth.role() = 'authenticated');
+
+-- ── about_media ───────────────────────────────
+create policy "public read about_media"
+  on about_media for select using (true);
+
+create policy "auth write about_media"
+  on about_media for all to authenticated
+  using (true) with check (true);
 
 -- ── contact ───────────────────────────────────
 create policy "public read contact"
