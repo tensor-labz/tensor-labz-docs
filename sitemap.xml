@@ -17,6 +17,10 @@
          <lastmod>2026-05-09</lastmod>
     </url>
     <url>
+         <loc>https://tensor-labz.github.io/tensor-labz-docs/admin/site-control/</loc>
+         <lastmod>2026-05-09</lastmod>
+    </url>
+    <url>
          <loc>https://tensor-labz.github.io/tensor-labz-docs/admin/table-config/</loc>
          <lastmod>2026-05-09</lastmod>
     </url>
@@ -33,11 +37,19 @@
          <lastmod>2026-05-09</lastmod>
     </url>
     <url>
+         <loc>https://tensor-labz.github.io/tensor-labz-docs/features/about-us/</loc>
+         <lastmod>2026-05-09</lastmod>
+    </url>
+    <url>
          <loc>https://tensor-labz.github.io/tensor-labz-docs/lambda/api-reference/</loc>
          <lastmod>2026-05-09</lastmod>
     </url>
     <url>
          <loc>https://tensor-labz.github.io/tensor-labz-docs/lambda/deployment/</loc>
+         <lastmod>2026-05-09</lastmod>
+    </url>
+    <url>
+         <loc>https://tensor-labz.github.io/tensor-labz-docs/lambda/direct-s3-upload/</loc>
          <lastmod>2026-05-09</lastmod>
     </url>
     <url>
