@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://tensor-labz.github.io/tensor-labz-docs/admin/modules/">
+        <link rel="canonical" href="https://tensor-labz.github.io/tensor-labz-docs/guides/s3-upload-urls/">
       
       
-        <link rel="prev" href="../site-control/">
+        <link rel="prev" href="../../admin/form-config/">
       
       
-        <link rel="next" href="../table-config/">
+        <link rel="next" href="../crud-operations/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Content Modules - Tensor Labz — Developer Docs</title>
+        <title>S3 Upload & URLs - Tensor Labz — Developer Docs</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#content-modules" class="md-skip">
+        <a href="#s3-upload-url-guide" class="md-skip">
           Skip to content
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Content Modules
+              S3 Upload & URLs
             
           </span>
         </div>
@@ -318,13 +318,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../overview/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../admin/overview/" class="md-tabs__link">
           
   
   
@@ -340,11 +338,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../guides/s3-upload-urls/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
           
   
   
@@ -1030,31 +1030,28 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   
@@ -1072,7 +1069,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1090,7 +1087,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../overview/" class="md-nav__link">
+      <a href="../../admin/overview/" class="md-nav__link">
         
   
   
@@ -1118,7 +1115,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../site-control/" class="md-nav__link">
+      <a href="../../admin/site-control/" class="md-nav__link">
         
   
   
@@ -1143,37 +1140,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Content Modules
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../admin/modules/" class="md-nav__link">
         
   
   
@@ -1189,214 +1159,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#module-list" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Module list
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#moduleconfig-structure" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ModuleConfig structure
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#field-types" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Field types
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#default-field-definitions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Default field definitions
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Default field definitions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#hero-hero" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hero (hero)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#services-services" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Services (services)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#projects-projects" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Projects (projects)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#about-about" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        About (about)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#contact-contact" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Contact (contact)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#social-links-social" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Social Links (social)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tablecolumns-extra-table-columns" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        tableColumns — extra table columns
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#relation-fields-fk-select" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Relation fields (FK select)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Relation fields (FK select)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#relationconfig-interface" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        RelationConfig interface
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#how-it-works" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How it works
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#supabase-migration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supabase migration
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dynamic-override" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Dynamic override
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1409,7 +1171,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../table-config/" class="md-nav__link">
+      <a href="../../admin/table-config/" class="md-nav__link">
         
   
   
@@ -1437,7 +1199,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../form-config/" class="md-nav__link">
+      <a href="../../admin/form-config/" class="md-nav__link">
         
   
   
@@ -1469,28 +1231,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
-        
-          
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
             
   
   
@@ -1508,7 +1273,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1523,10 +1288,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../guides/s3-upload-urls/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    S3 Upload & URLs
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1542,6 +1334,164 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How it works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-upload-your-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — Upload your file
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-get-the-public-url" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — Get the public URL
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-use-the-url" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — Use the URL
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3 — Use the URL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-to-the-about-us-media-gallery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add to the About Us media gallery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-a-hero-slide-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add a hero slide image
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-the-company-logo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Update the company logo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-a-project-cover-or-extra-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add a project cover or extra images
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-a-google-maps-embed-for-the-contact-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Set a Google Maps embed for the Contact page
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#folder-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Folder guide
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-file-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported file types
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#youtube-videos-no-s3-upload-needed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        YouTube videos (no S3 upload needed)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1554,7 +1504,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/crud-operations/" class="md-nav__link">
+      <a href="../crud-operations/" class="md-nav__link">
         
   
   
@@ -1815,156 +1765,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#module-list" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Module list
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#moduleconfig-structure" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ModuleConfig structure
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#field-types" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Field types
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#default-field-definitions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Default field definitions
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Default field definitions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#hero-hero" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hero (hero)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#services-services" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Services (services)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#projects-projects" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Projects (projects)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#about-about" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        About (about)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#contact-contact" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Contact (contact)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#social-links-social" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Social Links (social)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tablecolumns-extra-table-columns" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        tableColumns — extra table columns
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#relation-fields-fk-select" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Relation fields (FK select)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Relation fields (FK select)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#relationconfig-interface" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        RelationConfig interface
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#how-it-works" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1974,12 +1774,90 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#supabase-migration" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#step-1-upload-your-file" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Supabase migration
+        Step 1 — Upload your file
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-get-the-public-url" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — Get the public URL
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-use-the-url" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — Use the URL
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3 — Use the URL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-to-the-about-us-media-gallery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add to the About Us media gallery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-a-hero-slide-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add a hero slide image
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-the-company-logo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Update the company logo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-a-project-cover-or-extra-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add a project cover or extra images
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-a-google-maps-embed-for-the-contact-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Set a Google Maps embed for the Contact page
       
     </span>
   </a>
@@ -1992,10 +1870,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#dynamic-override" class="md-nav__link">
+  <a href="#folder-guide" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Dynamic override
+        Folder guide
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-file-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported file types
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#youtube-videos-no-s3-upload-needed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        YouTube videos (no S3 upload needed)
       
     </span>
   </a>
@@ -2045,10 +1945,10 @@
     
     
       <li class="md-path__item">
-        <a href="../overview/" class="md-path__link">
+        <a href="./" class="md-path__link">
           
   <span class="md-ellipsis">
-    Admin Panel
+    Guides
   </span>
 
         </a>
@@ -2067,495 +1967,258 @@
 
 
 
-<h1 id="content-modules">Content Modules<a class="headerlink" href="#content-modules" title="Permanent link">&para;</a></h1>
-<p>Modules are the content sections of the site. Each module maps to a Supabase table and drives the admin list table and CRUD form.</p>
+<h1 id="s3-upload-url-guide">S3 Upload &amp; URL Guide<a class="headerlink" href="#s3-upload-url-guide" title="Permanent link">&para;</a></h1>
+<p>This guide covers how to manually upload files to the S3 bucket and use the resulting public URLs anywhere on the site — admin panel fields, Supabase SQL, or media gallery rows.</p>
 <hr />
-<h2 id="module-list">Module list<a class="headerlink" href="#module-list" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Module ID</th>
-<th>Label</th>
-<th>Table</th>
-<th>Title field</th>
-<th>Description field</th>
-<th>Image field</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>hero</code></td>
-<td>Hero Slides</td>
-<td><code>hero</code></td>
-<td><code>title</code></td>
-<td><code>subtitle</code></td>
-<td><code>img</code></td>
-</tr>
-<tr>
-<td><code>services</code></td>
-<td>Services</td>
-<td><code>services</code></td>
-<td><code>title</code></td>
-<td><code>description</code></td>
-<td><code>imageURL</code></td>
-</tr>
-<tr>
-<td><code>projects</code></td>
-<td>Projects</td>
-<td><code>projects</code></td>
-<td><code>title</code></td>
-<td><code>description</code></td>
-<td><code>imageURL</code></td>
-</tr>
-<tr>
-<td><code>about</code></td>
-<td>About Us</td>
-<td><code>about</code></td>
-<td><code>components</code></td>
-<td><code>value</code></td>
-<td>—</td>
-</tr>
-<tr>
-<td><code>contact</code></td>
-<td>Contact Info</td>
-<td><code>contact</code></td>
-<td><code>title</code></td>
-<td><code>value</code></td>
-<td>—</td>
-</tr>
-<tr>
-<td><code>social</code></td>
-<td>Social Links</td>
-<td><code>social</code></td>
-<td><code>social_media</code></td>
-<td><code>value</code></td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
+<h2 id="how-it-works">How it works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart LR
+    File["Your file\n(image / video)"] --&gt;|"upload"| S3["S3 Bucket\ntensor-labz-store"]
+    S3 --&gt;|"public URL"| Admin["Admin panel field\nor SQL insert"]
+    Admin --&gt;|"saved to"| DB["Supabase DB"]
+    DB --&gt;|"read by"| Site["Live website"]</code></pre>
+<p>Every file uploaded to the bucket gets a permanent public URL you can paste anywhere.</p>
 <hr />
-<h2 id="moduleconfig-structure">ModuleConfig structure<a class="headerlink" href="#moduleconfig-structure" title="Permanent link">&para;</a></h2>
-<p>Defined in <code>src/features/admin/config/modules.tsx</code>:</p>
-<div class="language-typescript highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">interface</span><span class="w"> </span><span class="nx">FieldConfig</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="nx">FieldType</span><span class="p">;</span><span class="w"> </span><span class="c1">// see field types below</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="nx">placeholder?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="nx">required?</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="nx">span</span><span class="o">?:</span><span class="w"> </span><span class="s1">&#39;full&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;half&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// form grid column span</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="nx">options?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[];</span><span class="w">      </span><span class="c1">// for static radio/select types</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="nx">relation?</span><span class="o">:</span><span class="w"> </span><span class="kt">RelationConfig</span><span class="p">;</span><span class="w"> </span><span class="c1">// for dynamic FK select — fetches options from Supabase</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">}</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="kd">interface</span><span class="w"> </span><span class="nx">ModuleConfig</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w">              </span><span class="c1">// matches Supabase table name</span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">  </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w">           </span><span class="c1">// display name in sidebar</span>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">  </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="kt">IconType</span><span class="p">;</span><span class="w">          </span><span class="c1">// react-icons icon</span>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">  </span><span class="nx">imageField?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w">     </span><span class="c1">// key of the image column shown as thumbnail in table</span>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">  </span><span class="nx">titleField</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w">      </span><span class="c1">// primary text column in table</span>
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">  </span><span class="nx">descriptionField?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"> </span><span class="c1">// secondary text column in table</span>
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">  </span><span class="nx">tableColumns?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[];</span><span class="w"> </span><span class="c1">// extra field keys shown in CrudTable beyond title + description</span>
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">  </span><span class="nx">fields</span><span class="o">:</span><span class="w"> </span><span class="kt">FieldConfig</span><span class="p">[];</span><span class="w">   </span><span class="c1">// static default field definitions (used by AdminCrudForm)</span>
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="p">}</span>
+<h2 id="step-1-upload-your-file">Step 1 — Upload your file<a class="headerlink" href="#step-1-upload-your-file" title="Permanent link">&para;</a></h2>
+<p>Choose the method that fits your situation.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">AWS Console (easiest — no CLI needed)</label><label for="__tabbed_1_2">AWS CLI (faster for multiple files)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li>Open <a href="https://s3.console.aws.amazon.com/s3/buckets/tensor-labz-store">AWS Console → S3</a></li>
+<li>Sign in with your IAM credentials</li>
+<li>Navigate to the correct folder (see <a href="#folder-guide">folder guide</a> below)</li>
+<li>Click <strong>Upload → Add files</strong> and select your file</li>
+<li>Expand <strong>Permissions</strong> → tick <strong>Grant public-read access</strong></li>
+<li>Click <strong>Upload</strong></li>
+</ol>
+</div>
+<div class="tabbed-block">
+<p><strong>Single file:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>aws<span class="w"> </span>--profile<span class="w"> </span>tensor<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>&lt;your-file&gt;<span class="w"> </span>s3://tensor-labz-store/&lt;folder&gt;/&lt;filename&gt;<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span>--acl<span class="w"> </span>public-read<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span>--content-type<span class="w"> </span>&lt;mime-type&gt;
 </span></code></pre></div>
-<hr />
-<h2 id="field-types">Field types<a class="headerlink" href="#field-types" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Renders</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>text</code></td>
-<td><code>&lt;input type="text"&gt;</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>textarea</code></td>
-<td><code>&lt;textarea&gt;</code></td>
-<td>3 rows, resizable</td>
-</tr>
-<tr>
-<td><code>url</code></td>
-<td><code>&lt;input type="url"&gt;</code></td>
-<td>Validates URL format</td>
-</tr>
-<tr>
-<td><code>image</code></td>
-<td>Upload/URL tabs</td>
-<td>S3 upload via Lambda, drag &amp; drop</td>
-</tr>
-<tr>
-<td><code>images</code></td>
-<td>Gallery grid</td>
-<td>Multiple images, S3 upload + URL</td>
-</tr>
-<tr>
-<td><code>toggle</code></td>
-<td>Animated switch</td>
-<td>Stores <code>true</code>/<code>false</code></td>
-</tr>
-<tr>
-<td><code>checkbox</code></td>
-<td>HTML checkbox</td>
-<td>Stores <code>true</code>/<code>false</code></td>
-</tr>
-<tr>
-<td><code>tags</code></td>
-<td>Text input</td>
-<td>Comma-separated string stored as-is</td>
-</tr>
-<tr>
-<td><code>multiinput</code></td>
-<td>Array of inputs</td>
-<td>Stored as <code>text[]</code>, add/remove rows</td>
-</tr>
-<tr>
-<td><code>richtext</code></td>
-<td>React Quill editor</td>
-<td>WYSIWYG HTML editor</td>
-</tr>
-<tr>
-<td><code>radio</code></td>
-<td>Radio buttons</td>
-<td>Requires <code>options: string[]</code></td>
-</tr>
-<tr>
-<td><code>select</code></td>
-<td><code>&lt;select&gt;</code> dropdown</td>
-<td>Static: requires <code>options: string[]</code>. Dynamic FK: set <code>relation</code> instead</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="default-field-definitions">Default field definitions<a class="headerlink" href="#default-field-definitions" title="Permanent link">&para;</a></h2>
-<h3 id="hero-hero">Hero (<code>hero</code>)<a class="headerlink" href="#hero-hero" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Label</th>
-<th>Type</th>
-<th>Span</th>
-<th>Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>img</code></td>
-<td>Image</td>
-<td><code>image</code></td>
-<td>full</td>
-<td>—</td>
-</tr>
-<tr>
-<td><code>title</code></td>
-<td>Title</td>
-<td><code>text</code></td>
-<td>full</td>
-<td>✅</td>
-</tr>
-<tr>
-<td><code>subtitle</code></td>
-<td>Subtitle</td>
-<td><code>text</code></td>
-<td>full</td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
-<h3 id="services-services">Services (<code>services</code>)<a class="headerlink" href="#services-services" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Label</th>
-<th>Type</th>
-<th>Span</th>
-<th>Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>imageURL</code></td>
-<td>Image</td>
-<td><code>image</code></td>
-<td>full</td>
-<td>—</td>
-</tr>
-<tr>
-<td><code>title</code></td>
-<td>Title</td>
-<td><code>text</code></td>
-<td>half</td>
-<td>✅</td>
-</tr>
-<tr>
-<td><code>slug</code></td>
-<td>Slug</td>
-<td><code>text</code></td>
-<td>half</td>
-<td>✅</td>
-</tr>
-<tr>
-<td><code>description</code></td>
-<td>Description</td>
-<td><code>textarea</code></td>
-<td>full</td>
-<td>—</td>
-</tr>
-<tr>
-<td><code>icon</code></td>
-<td>Icon Class</td>
-<td><code>text</code></td>
-<td>half</td>
-<td>—</td>
-</tr>
-<tr>
-<td><code>show_in_home</code></td>
-<td>Show on Home Page</td>
-<td><code>toggle</code></td>
-<td>half</td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
-<h3 id="projects-projects">Projects (<code>projects</code>)<a class="headerlink" href="#projects-projects" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Label</th>
-<th>Type</th>
-<th>Span</th>
-<th>Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>imageURL</code></td>
-<td>Image</td>
-<td><code>image</code></td>
-<td>full</td>
-<td>—</td>
-</tr>
-<tr>
-<td><code>title</code></td>
-<td>Title</td>
-<td><code>text</code></td>
-<td>half</td>
-<td>✅</td>
-</tr>
-<tr>
-<td><code>slug</code></td>
-<td>Slug</td>
-<td><code>text</code></td>
-<td>half</td>
-<td>✅</td>
-</tr>
-<tr>
-<td><code>service_id</code></td>
-<td>Service</td>
-<td><code>select</code></td>
-<td>half</td>
-<td>—</td>
-</tr>
-<tr>
-<td><code>tags</code></td>
-<td>Tags</td>
-<td><code>tags</code></td>
-<td>half</td>
-<td>—</td>
-</tr>
-<tr>
-<td><code>description</code></td>
-<td>Short Description</td>
-<td><code>textarea</code></td>
-<td>full</td>
-<td>—</td>
-</tr>
-<tr>
-<td><code>content</code></td>
-<td>Full Content</td>
-<td><code>richtext</code></td>
-<td>full</td>
-<td>—</td>
-</tr>
-<tr>
-<td><code>vedio_demo</code></td>
-<td>Video Demo URL</td>
-<td><code>url</code></td>
-<td>full</td>
-<td>—</td>
-</tr>
-<tr>
-<td><code>extraImages</code></td>
-<td>Extra Images</td>
-<td><code>images</code></td>
-<td>full</td>
-<td>—</td>
-</tr>
-<tr>
-<td><code>is_top</code></td>
-<td>Featured Project</td>
-<td><code>toggle</code></td>
-<td>half</td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
-<h3 id="about-about">About (<code>about</code>)<a class="headerlink" href="#about-about" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Label</th>
-<th>Type</th>
-<th>Span</th>
-<th>Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>components</code></td>
-<td>Title</td>
-<td><code>text</code></td>
-<td>full</td>
-<td>✅</td>
-</tr>
-<tr>
-<td><code>value</code></td>
-<td>Description</td>
-<td><code>textarea</code></td>
-<td>full</td>
-<td>✅</td>
-</tr>
-</tbody>
-</table>
-<h3 id="contact-contact">Contact (<code>contact</code>)<a class="headerlink" href="#contact-contact" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Label</th>
-<th>Type</th>
-<th>Span</th>
-<th>Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>contact</code></td>
-<td>Contact Type</td>
-<td><code>text</code></td>
-<td>half</td>
-<td>✅</td>
-</tr>
-<tr>
-<td><code>title</code></td>
-<td>Label</td>
-<td><code>text</code></td>
-<td>half</td>
-<td>✅</td>
-</tr>
-<tr>
-<td><code>value</code></td>
-<td>Value</td>
-<td><code>text</code></td>
-<td>full</td>
-<td>✅</td>
-</tr>
-</tbody>
-</table>
-<h3 id="social-links-social">Social Links (<code>social</code>)<a class="headerlink" href="#social-links-social" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Label</th>
-<th>Type</th>
-<th>Span</th>
-<th>Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>social_media</code></td>
-<td>Platform</td>
-<td><code>text</code></td>
-<td>half</td>
-<td>✅</td>
-</tr>
-<tr>
-<td><code>value</code></td>
-<td>URL</td>
-<td><code>url</code></td>
-<td>half</td>
-<td>✅</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="tablecolumns-extra-table-columns">tableColumns — extra table columns<a class="headerlink" href="#tablecolumns-extra-table-columns" title="Permanent link">&para;</a></h2>
-<p><code>tableColumns</code> lists field keys that appear in <code>CrudTable</code> between the title and description columns when no <code>table_config</code> Supabase row exists for the module.</p>
-<div class="language-typescript highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// modules.tsx — projects module</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">{</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;projects&#39;</span><span class="p">,</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nx">titleField</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;title&#39;</span><span class="p">,</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="nx">descriptionField</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;description&#39;</span><span class="p">,</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="nx">tableColumns</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;service_id&#39;</span><span class="p">],</span><span class="w">   </span><span class="c1">// ← adds a &quot;Service&quot; column (resolved to label)</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="p">...</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="p">}</span>
+<p><strong>Examples:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Upload an About Us video</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>aws<span class="w"> </span>--profile<span class="w"> </span>tensor<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>team-intro.mp4<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span>s3://tensor-labz-store/about-us/team-intro.mp4<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span>--acl<span class="w"> </span>public-read<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span>--content-type<span class="w"> </span>video/mp4
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># Upload a hero slide image</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>aws<span class="w"> </span>--profile<span class="w"> </span>tensor<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>hero-slide.jpg<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span>s3://tensor-labz-store/Home/Hero/hero-slide.jpg<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span>--acl<span class="w"> </span>public-read<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span>--content-type<span class="w"> </span>image/jpeg
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="c1"># Upload the company logo</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>aws<span class="w"> </span>--profile<span class="w"> </span>tensor<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>logo.png<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">  </span>s3://tensor-labz-store/assets/upload/logo.png<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">  </span>--acl<span class="w"> </span>public-read<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">  </span>--content-type<span class="w"> </span>image/png
 </span></code></pre></div>
-<p>The column header is taken from the matching <code>FieldConfig.label</code> in <code>fields[]</code>. If the key has no matching field definition, the key itself is used as the header.</p>
-<p>This is a code-level default. Once you save a <code>table_config</code> row for the module via <strong>Admin → Settings → Tables</strong>, the Supabase config takes over and <code>tableColumns</code> is ignored.</p>
+<p><strong>Multiple files at once:</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>aws<span class="w"> </span>--profile<span class="w"> </span>tensor<span class="w"> </span>s3<span class="w"> </span>sync<span class="w"> </span>./my-images/<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span>s3://tensor-labz-store/projects/my-project/<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span>--acl<span class="w"> </span>public-read
+</span></code></pre></div>
+</div>
+</div>
+</div>
 <hr />
-<h2 id="relation-fields-fk-select">Relation fields (FK select)<a class="headerlink" href="#relation-fields-fk-select" title="Permanent link">&para;</a></h2>
-<p>A <code>select</code> field can be backed by a live Supabase table instead of a static <code>options</code> list. Set the <code>relation</code> key instead of <code>options</code>:</p>
-<div class="language-typescript highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;service_id&#39;</span><span class="p">,</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Service&#39;</span><span class="p">,</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;select&#39;</span><span class="p">,</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="nx">span</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;half&#39;</span><span class="p">,</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="nx">relation</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="nx">table</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;services&#39;</span><span class="p">,</span><span class="w">     </span><span class="c1">// Supabase table to query</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="nx">labelField</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;title&#39;</span><span class="p">,</span><span class="w">   </span><span class="c1">// field shown in the dropdown</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="nx">valueField</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="w">      </span><span class="c1">// field stored as the value (default: &#39;id&#39;)</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">  </span><span class="p">},</span>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="p">}</span>
+<h2 id="step-2-get-the-public-url">Step 2 — Get the public URL<a class="headerlink" href="#step-2-get-the-public-url" title="Permanent link">&para;</a></h2>
+<p>The URL pattern is always:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>https://tensor-labz-store.s3.eu-north-1.amazonaws.com/&lt;folder&gt;/&lt;filename&gt;
 </span></code></pre></div>
-<h3 id="relationconfig-interface">RelationConfig interface<a class="headerlink" href="#relationconfig-interface" title="Permanent link">&para;</a></h3>
-<div class="language-typescript highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">interface</span><span class="w"> </span><span class="nx">RelationConfig</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nx">table</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w">       </span><span class="c1">// Supabase table to fetch options from</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="nx">labelField</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w">  </span><span class="c1">// field to display in the dropdown</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="nx">valueField?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"> </span><span class="c1">// field to store as value — defaults to &#39;id&#39;</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">}</span>
-</span></code></pre></div>
-<h3 id="how-it-works">How it works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h3>
-<p><strong>In <code>AdminCrudForm</code></strong> — <code>RelationSelect</code> fetches all rows from <code>relation.table</code> on mount and renders a native <code>&lt;select&gt;</code> dropdown. The stored value is the numeric ID (or <code>null</code> for blank).</p>
-<p><strong>In <code>CrudTable</code></strong> — on module load, the table fetches all rows from each relation table and builds an <code>id → label</code> lookup map. Stored integer IDs are transparently resolved to their display label in the column cell, for both the Supabase colConfig path and the static <code>tableColumns</code> fallback.</p>
-<h3 id="supabase-migration">Supabase migration<a class="headerlink" href="#supabase-migration" title="Permanent link">&para;</a></h3>
-<p>The <code>projects</code> table uses a foreign key instead of a text slug:</p>
-<div class="language-sql highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">-- add the FK column</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">alter</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">projects</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="k">add</span><span class="w"> </span><span class="k">column</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">exists</span><span class="w"> </span><span class="n">service_id</span><span class="w"> </span><span class="nb">bigint</span><span class="w"> </span><span class="k">references</span><span class="w"> </span><span class="n">services</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">AWS Console</label><label for="__tabbed_2_2">Build it yourself</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li>Click the uploaded file in S3</li>
+<li>Copy the <strong>Object URL</strong> shown in the properties panel</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<p>Replace <code>&lt;folder&gt;</code> and <code>&lt;filename&gt;</code> with what you used:</p>
+<table>
+<thead>
+<tr>
+<th>Uploaded path</th>
+<th>Public URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>about-us/team-intro.mp4</code></td>
+<td><code>https://tensor-labz-store.s3.eu-north-1.amazonaws.com/about-us/team-intro.mp4</code></td>
+</tr>
+<tr>
+<td><code>Home/Hero/hero-slide.jpg</code></td>
+<td><code>https://tensor-labz-store.s3.eu-north-1.amazonaws.com/Home/Hero/hero-slide.jpg</code></td>
+</tr>
+<tr>
+<td><code>assets/upload/logo.png</code></td>
+<td><code>https://tensor-labz-store.s3.eu-north-1.amazonaws.com/assets/upload/logo.png</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<hr />
+<h2 id="step-3-use-the-url">Step 3 — Use the URL<a class="headerlink" href="#step-3-use-the-url" title="Permanent link">&para;</a></h2>
+<p>Where you paste the URL depends on what you're adding.</p>
+<h3 id="add-to-the-about-us-media-gallery">Add to the About Us media gallery<a class="headerlink" href="#add-to-the-about-us-media-gallery" title="Permanent link">&para;</a></h3>
+<p><strong>Via Supabase SQL editor</strong> (fastest for one-off inserts):</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">-- Add a video</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">about_media</span><span class="w"> </span><span class="p">(</span><span class="k">type</span><span class="p">,</span><span class="w"> </span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">sort_order</span><span class="p">)</span><span class="w"> </span><span class="k">values</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="p">(</span><span class="s1">&#39;video&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;https://tensor-labz-store.s3.eu-north-1.amazonaws.com/about-us/team-intro.mp4&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Meet the Team&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1">-- backfill from the old text slug (optional, if migrating existing data)</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="k">update</span><span class="w"> </span><span class="n">projects</span><span class="w"> </span><span class="n">p</span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="k">set</span><span class="w"> </span><span class="n">service_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">id</span>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="k">from</span><span class="w"> </span><span class="n">services</span><span class="w"> </span><span class="n">s</span>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="k">where</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">slug</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">service</span><span class="p">;</span>
-</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
-</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="c1">-- drop the old column once backfill is verified</span>
-</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="k">alter</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">projects</span><span class="w"> </span><span class="k">drop</span><span class="w"> </span><span class="k">column</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">exists</span><span class="w"> </span><span class="n">service</span><span class="p">;</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1">-- Add an image</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">about_media</span><span class="w"> </span><span class="p">(</span><span class="k">type</span><span class="p">,</span><span class="w"> </span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">sort_order</span><span class="p">)</span><span class="w"> </span><span class="k">values</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span><span class="p">(</span><span class="s1">&#39;image&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;https://tensor-labz-store.s3.eu-north-1.amazonaws.com/about-us/office.jpg&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Our Office&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">sort_order</p>
+<p>Items are displayed in ascending <code>sort_order</code>. Set it to control the sequence.
+Use <code>1, 2, 3 …</code> or leave gaps (<code>10, 20, 30</code>) if you plan to insert items between existing ones later.</p>
+</div>
+<h3 id="add-a-hero-slide-image">Add a hero slide image<a class="headerlink" href="#add-a-hero-slide-image" title="Permanent link">&para;</a></h3>
+<p>Go to <strong>Admin → Hero Slides → New</strong> or edit an existing slide and paste the URL into the <strong>Image</strong> field's <strong>S3 / URL</strong> tab.</p>
+<p>Or directly via SQL:</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">hero</span><span class="w"> </span><span class="p">(</span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">subtitle</span><span class="p">,</span><span class="w"> </span><span class="n">img</span><span class="p">)</span><span class="w"> </span><span class="k">values</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="p">(</span><span class="s1">&#39;AI for Agriculture&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Building smarter tools for farmers&#39;</span><span class="p">,</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">   </span><span class="s1">&#39;https://tensor-labz-store.s3.eu-north-1.amazonaws.com/Home/Hero/hero-slide.jpg&#39;</span><span class="p">);</span>
+</span></code></pre></div>
+<h3 id="update-the-company-logo">Update the company logo<a class="headerlink" href="#update-the-company-logo" title="Permanent link">&para;</a></h3>
+<p>Go to <strong>Admin → Settings → General</strong> and paste the URL into the Logo URL fields.</p>
+<p>Or via SQL:</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">update</span><span class="w"> </span><span class="n">company_info</span><span class="w"> </span><span class="k">set</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="n">logo_url</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;https://tensor-labz-store.s3.eu-north-1.amazonaws.com/assets/upload/logo.png&#39;</span><span class="p">,</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span><span class="n">logo_url_dark</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;https://tensor-labz-store.s3.eu-north-1.amazonaws.com/assets/upload/logo-dark.png&#39;</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="k">where</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span></code></pre></div>
+<h3 id="add-a-project-cover-or-extra-images">Add a project cover or extra images<a class="headerlink" href="#add-a-project-cover-or-extra-images" title="Permanent link">&para;</a></h3>
+<p>In the admin panel: <strong>Admin → Projects → edit project → Image</strong> field → switch to <strong>S3 / URL</strong> tab → paste.</p>
+<p>Or for extra images via SQL:</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">update</span><span class="w"> </span><span class="n">projects</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">set</span><span class="w"> </span><span class="n">extraimages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">array</span><span class="p">[</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="s1">&#39;https://tensor-labz-store.s3.eu-north-1.amazonaws.com/projects/my-project/img1.jpg&#39;</span><span class="p">,</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span><span class="s1">&#39;https://tensor-labz-store.s3.eu-north-1.amazonaws.com/projects/my-project/img2.jpg&#39;</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="p">]</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="k">where</span><span class="w"> </span><span class="n">slug</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;my-project&#39;</span><span class="p">;</span>
+</span></code></pre></div>
+<h3 id="set-a-google-maps-embed-for-the-contact-page">Set a Google Maps embed for the Contact page<a class="headerlink" href="#set-a-google-maps-embed-for-the-contact-page" title="Permanent link">&para;</a></h3>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">update</span><span class="w"> </span><span class="n">contact</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">set</span><span class="w"> </span><span class="n">link</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;https://www.google.com/maps/embed?pb=!1m17!1m12...&#39;</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="k">where</span><span class="w"> </span><span class="n">contact</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;address&#39;</span><span class="p">;</span>
 </span></code></pre></div>
 <hr />
-<h2 id="dynamic-override">Dynamic override<a class="headerlink" href="#dynamic-override" title="Permanent link">&para;</a></h2>
-<p>The static <code>fields</code> array is only the default. If a row exists in <code>form_config</code> for a module, <code>AdminCrudForm</code> uses that instead. See <a href="../form-config/">Dynamic Form Config</a>.</p>
+<h2 id="folder-guide">Folder guide<a class="headerlink" href="#folder-guide" title="Permanent link">&para;</a></h2>
+<p>Always place files in the right folder to keep the bucket organised.</p>
+<table>
+<thead>
+<tr>
+<th>What you're uploading</th>
+<th>Folder to use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>About Us videos / images</td>
+<td><code>about-us/</code></td>
+</tr>
+<tr>
+<td>Hero slide images</td>
+<td><code>Home/Hero/</code></td>
+</tr>
+<tr>
+<td>Service images</td>
+<td><code>Insights/</code></td>
+</tr>
+<tr>
+<td>Project cover + extras</td>
+<td><code>projects/{project-slug}/</code></td>
+</tr>
+<tr>
+<td>Company logo (light)</td>
+<td><code>assets/upload/logo.png</code></td>
+</tr>
+<tr>
+<td>Company logo (dark)</td>
+<td><code>assets/upload/logo-dark.png</code></td>
+</tr>
+<tr>
+<td>Any other static asset</td>
+<td><code>assets/upload/</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="supported-file-types">Supported file types<a class="headerlink" href="#supported-file-types" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Extensions</th>
+<th>Content-Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Image</td>
+<td><code>.jpg</code>, <code>.jpeg</code></td>
+<td><code>image/jpeg</code></td>
+</tr>
+<tr>
+<td>Image</td>
+<td><code>.png</code></td>
+<td><code>image/png</code></td>
+</tr>
+<tr>
+<td>Image</td>
+<td><code>.webp</code></td>
+<td><code>image/webp</code></td>
+</tr>
+<tr>
+<td>Image</td>
+<td><code>.gif</code></td>
+<td><code>image/gif</code></td>
+</tr>
+<tr>
+<td>Image</td>
+<td><code>.svg</code></td>
+<td><code>image/svg+xml</code></td>
+</tr>
+<tr>
+<td>Video</td>
+<td><code>.mp4</code></td>
+<td><code>video/mp4</code></td>
+</tr>
+<tr>
+<td>Document</td>
+<td><code>.pdf</code></td>
+<td><code>application/pdf</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Keep files under 50 MB</p>
+<p>Very large videos are best hosted on YouTube and added as embed URLs instead of S3 direct links. YouTube URLs also get automatic thumbnail previews in the media gallery.</p>
+</div>
+<hr />
+<h2 id="youtube-videos-no-s3-upload-needed">YouTube videos (no S3 upload needed)<a class="headerlink" href="#youtube-videos-no-s3-upload-needed" title="Permanent link">&para;</a></h2>
+<p>For YouTube content, skip S3 entirely. Get the embed URL from YouTube and insert directly:</p>
+<ol>
+<li>Open your video on YouTube</li>
+<li>Click <strong>Share → Embed</strong></li>
+<li>Copy only the URL inside <code>src="..."</code> — e.g. <code>https://www.youtube.com/embed/dQw4w9WgXcQ</code></li>
+<li>Insert it into <code>about_media</code>:</li>
+</ol>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">about_media</span><span class="w"> </span><span class="p">(</span><span class="k">type</span><span class="p">,</span><span class="w"> </span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">sort_order</span><span class="p">)</span><span class="w"> </span><span class="k">values</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="p">(</span><span class="s1">&#39;video&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;https://www.youtube.com/embed/dQw4w9WgXcQ&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Our Story&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+</span></code></pre></div>
+<p>The gallery automatically extracts a thumbnail from the YouTube video ID — no image upload needed.</p>
 
 
 
@@ -2593,7 +2256,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../site-control/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Site Control">
+          <a href="../../admin/form-config/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Dynamic Form Config">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2603,20 +2266,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Site Control
+                Dynamic Form Config
               </div>
             </div>
           </a>
         
         
           
-          <a href="../table-config/" class="md-footer__link md-footer__link--next" aria-label="Next: Dynamic Table Config">
+          <a href="../crud-operations/" class="md-footer__link md-footer__link--next" aria-label="Next: Admin CRUD Operations">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Dynamic Table Config
+                Admin CRUD Operations
               </div>
             </div>
             <div class="md-footer__button md-icon">
