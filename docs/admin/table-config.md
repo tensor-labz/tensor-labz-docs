@@ -6,14 +6,16 @@ The **Tables** tab in Admin Settings lets you customise each module's list table
 
 ## What you can configure per column
 
-| Setting    | Type              | Default | Description                                       |
-| ---------- | ----------------- | ------- | ------------------------------------------------- |
-| `label`    | string            | key     | Column header shown in the table                  |
-| `visible`  | boolean           | `true`  | Hide a column without removing it from config     |
-| `sortable` | boolean           | `true`  | Enable/disable column sort click                  |
-| `order`    | number            | —       | Display order — lower numbers appear first        |
-| `width`    | string            | auto    | Fixed CSS width e.g. `"120px"` (omit = flex grow)|
-| `align`    | left/center/right | left    | Cell and header text alignment                    |
+| Property   | Type              | Default | Description                                        |
+| ---------- | ----------------- | ------- | -------------------------------------------------- |
+| `field`    | string            | —       | **Required.** DB column key (e.g. `"title"`)       |
+| `title`    | string            | —       | **Required.** Column header shown in the table     |
+| `visible`  | boolean           | `true`  | Hide a column without removing it from config      |
+| `sortable` | boolean           | `true`  | Enable/disable column sort click                   |
+| `order`    | number            | —       | Display order — lower numbers appear first         |
+| `width`    | string            | auto    | Fixed CSS width e.g. `"120px"` (omit = flex grow) |
+| `height`   | string            | auto    | Fixed cell height e.g. `"48px"`                    |
+| `align`    | left/center/right | left    | Cell and header text alignment                     |
 
 ### Per-table pagination
 
@@ -57,11 +59,12 @@ select * from table_config where module_id = 'projects';
   "module_id": "projects",
   "page_size": 20,
   "columns": [
-    { "key": "imageURL",     "label": "Cover",        "visible": true,  "sortable": false, "order": 0 },
-    { "key": "title",        "label": "Project Name",  "visible": true,  "sortable": true,  "order": 1 },
-    { "key": "slug",         "label": "Slug",          "visible": true,  "sortable": true,  "order": 2, "width": "140px" },
-    { "key": "description",  "label": "Summary",       "visible": false, "sortable": false, "order": 3 },
-    { "key": "is_top",       "label": "Featured",      "visible": true,  "sortable": true,  "order": 4, "width": "90px", "align": "center" }
+    { "field": "imageURL",    "title": "Cover",         "visible": true,  "sortable": false, "order": 0 },
+    { "field": "title",       "title": "Project Name",  "visible": true,  "sortable": true,  "order": 1 },
+    { "field": "service",     "title": "Service",       "visible": true,  "sortable": true,  "order": 2, "width": "140px" },
+    { "field": "slug",        "title": "Slug",          "visible": true,  "sortable": true,  "order": 3, "width": "140px" },
+    { "field": "description", "title": "Summary",       "visible": false, "sortable": false, "order": 4 },
+    { "field": "is_top",      "title": "Featured",      "visible": true,  "sortable": true,  "order": 5, "width": "90px", "align": "center" }
   ]
 }
 ```
@@ -106,19 +109,27 @@ Columns are then built for `react-data-table-component`:
 ```typescript
 [...colConfig]
   .filter((c) => c.visible !== false)
+  .filter((c) => c.field.toLowerCase() !== primaryImgKey) // skip primary image (rendered separately)
   .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
   .forEach((c) => {
-    cols.push({
-      id: c.key,
-      name: c.label,
-      selector: (row) => String(row[c.key] ?? ''),
-      sortable: c.sortable ?? true,
-      ...(c.width ? { width: c.width } : { grow: 1 }),
-    });
+    const isImg = imageTypeKeys.has(c.field.toLowerCase());
+    cols.push(
+      isImg
+        ? { id: c.field, name: c.title, width: c.width ?? '68px', sortable: false,
+            cell: (row) => <ImageCell src={resolveImg(rowVal(row, c.field))} /> }
+        : { id: c.field, name: c.title,
+            selector: (row) => String(rowVal(row, c.field) ?? ''),
+            sortable: c.sortable ?? true, wrap: true,
+            ...(c.width ? { width: c.width } : { grow: 1 }) }
+    );
   });
 ```
 
-Image column is always inserted first if the module defines an `imageField`. The edit-action column is always last.
+**Image handling notes:**
+- `rowVal(row, key)` does a case-insensitive lookup — Postgres lowercases unquoted column names (e.g. `imageURL` → `imageurl`), so `field: "imageURL"` still resolves correctly
+- Any column whose `field` matches an `image` or `images` type in `fields[]` is rendered as a thumbnail, not raw URL text
+- The primary `imageField` is always the first column and is skipped in the colConfig loop to avoid duplication
+- Clicking a row navigates to the edit form — there is no separate Edit button column
 
 ---
 
@@ -149,12 +160,13 @@ create policy "admin write"
 // src/shared/types/tableConfig.ts
 
 export interface TableColumnConfig {
-  key: string;
-  label: string;
+  field: string;       // DB column key
+  title: string;       // column header display name
   visible?: boolean;   // default true
   sortable?: boolean;  // default true
-  order?: number;      // display order
-  width?: string;      // e.g. "120px"
+  order?: number;      // display order (ascending)
+  width?: string;      // fixed width e.g. "120px"
+  height?: string;     // fixed cell height e.g. "48px"
   align?: 'left' | 'center' | 'right';
 }
 

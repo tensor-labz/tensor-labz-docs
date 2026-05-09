@@ -33,13 +33,14 @@ interface FieldConfig {
 }
 
 interface ModuleConfig {
-  id: string; // matches Supabase table name
-  label: string; // display name in sidebar
-  icon: IconType; // react-icons icon
-  imageField?: string; // key of the image shown in list table
-  titleField: string; // primary text in list table
-  descriptionField?: string; // secondary text in list table
-  fields: FieldConfig[]; // static default field definitions
+  id: string;              // matches Supabase table name
+  label: string;           // display name in sidebar
+  icon: IconType;          // react-icons icon
+  imageField?: string;     // key of the image column shown as thumbnail in table
+  titleField: string;      // primary text column in table
+  descriptionField?: string; // secondary text column in table
+  tableColumns?: string[]; // extra field keys shown in CrudTable beyond title + description
+  fields: FieldConfig[];   // static default field definitions (used by AdminCrudForm)
 }
 ```
 
@@ -121,6 +122,27 @@ interface ModuleConfig {
 | -------------- | -------- | ------ | ---- | -------- |
 | `social_media` | Platform | `text` | half | ✅       |
 | `value`        | URL      | `url`  | half | ✅       |
+
+---
+
+## tableColumns — extra table columns
+
+`tableColumns` lists field keys that appear in `CrudTable` between the title and description columns when no `table_config` Supabase row exists for the module.
+
+```typescript
+// modules.tsx — projects module
+{
+  id: 'projects',
+  titleField: 'title',
+  descriptionField: 'description',
+  tableColumns: ['service'],   // ← adds a "Service Slug" column
+  ...
+}
+```
+
+The column header is taken from the matching `FieldConfig.label` in `fields[]`. If the key has no matching field definition, the key itself is used as the header.
+
+This is a code-level default. Once you save a `table_config` row for the module via **Admin → Settings → Tables**, the Supabase config takes over and `tableColumns` is ignored.
 
 ---
 
