@@ -1,0 +1,98 @@
+site_name: Tensor Labz — Developer Docs
+site_description: End-to-end documentation for the Tensor Labz website platform
+site_url: https://tensor-labz.github.io/tensor-labz-docs/
+repo_url: https://github.com/tensor-labz/tensor-labz-docs
+repo_name: tensor-labz-docs
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  palette:
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - toc.follow
+  font:
+    text: Inter
+    code: JetBrains Mono
+  icon:
+    repo: fontawesome/brands/github
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Setup:
+      - Prerequisites: setup/prerequisites.md
+      - Environment Variables: setup/environment-variables.md
+      - Local Development: setup/local-development.md
+  - Architecture:
+      - System Overview: architecture/overview.md
+  - Supabase:
+      - Schema: supabase/schema.md
+      - RLS Policies: supabase/rls-policies.md
+      - Authentication: supabase/auth.md
+  - Lambda — Image Service:
+      - Overview: lambda/overview.md
+      - Deployment Guide: lambda/deployment.md
+      - API Reference: lambda/api-reference.md
+  - Admin Panel:
+      - Overview: admin/overview.md
+      - Content Modules: admin/modules.md
+      - Dynamic Table Config: admin/table-config.md
+      - Dynamic Form Config: admin/form-config.md
+  - Deployment:
+      - Staging — Firebase: deployment/staging.md
+      - Production — Amplify: deployment/production.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/tensor-labz
