@@ -1516,9 +1516,10 @@
             P4["/about · /contact"]
         end
         subgraph AdminPanel["Admin Panel  /admin/*"]
-            Table["AdminDataTable\nlist + search + sort"]
+            Table["CrudTable\nreact-data-table-component\nsearch · sort · pagination"]
             Form["AdminCrudForm\ndynamic field renderer"]
             Settings["AdminSettings\nTables · Forms config"]
+            AdminStore["Redux adminSlice\ncreateEntityAdapter\nfetchRecords · createRecord\nupdateRecord · deleteRecord"]
         end
     end
 
@@ -1535,7 +1536,7 @@
     end
 
     Pages      -- "supabase.from().select()" --&gt; PG
-    AdminPanel -- "supabase.from().upsert()" --&gt; PG
+    AdminPanel -- "adminSlice thunks\nfetch · create · update · delete" --&gt; PG
     AdminPanel -- "read/write config" --&gt; Config
     AdminPanel -- "signInWithPassword()" --&gt; SupaAuth
     SupaAuth   -- "JWT session" --&gt; AdminPanel

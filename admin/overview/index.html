@@ -1093,6 +1093,34 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#redux-data-flow-for-admin-crud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Redux data flow for admin CRUD
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Redux data flow for admin CRUD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adminslice-thunks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        adminSlice thunks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#auth-guard-flow" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1380,6 +1408,34 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#redux-data-flow-for-admin-crud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Redux data flow for admin CRUD
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Redux data flow for admin CRUD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adminslice-thunks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        adminSlice thunks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#auth-guard-flow" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1489,7 +1545,7 @@
     Root --&gt; Users["/admin/users\nAdminUsers"]
     Root --&gt; Billing["/admin/billing\nAdminBilling"]
     Root --&gt; Settings["/admin/settings\nAdminSettings"]
-    Root --&gt; Module["/admin/:module\nAdminDataTable\nlist + search + sort"]
+    Root --&gt; Module["/admin/:module\nAdminDataTable → CrudTable\nreact-data-table-component"]
     Module --&gt; Record["/admin/:module/:id\nAdminCrudForm\nedit record"]
     Module --&gt; New["/admin/:module/new\nAdminCrudForm\ncreate record"]
 
@@ -1502,8 +1558,53 @@
     style New fill:#22c55e,color:#fff</code></pre>
 <div class="admonition important">
 <p class="admonition-title">Route ordering</p>
-</div>
 <p><code>users</code>, <code>billing</code>, and <code>settings</code> must be declared <strong>before</strong> the <code>:module</code> catch-all in <code>AdminDashboard.tsx</code>. Without this, React Router matches them as module names.</p>
+</div>
+<hr />
+<h2 id="redux-data-flow-for-admin-crud">Redux data flow for admin CRUD<a class="headerlink" href="#redux-data-flow-for-admin-crud" title="Permanent link">&para;</a></h2>
+<p>All admin data operations go through <strong>Redux Toolkit</strong> — no direct Supabase calls in admin components.</p>
+<pre class="mermaid"><code>flowchart LR
+    Component["Admin component\n(CrudTable / AdminCrudForm\n/ AdminOverview)"] --&gt;|"dispatch thunk"| Slice["adminSlice\ncreateEntityAdapter\ncreateAsyncThunk"]
+    Slice --&gt;|"supabase.from()"| DB["Supabase\nPostgreSQL"]
+    DB --&gt; Slice
+    Slice --&gt;|"entity state update"| Store["Redux store\nmodules[moduleId]\n{ ids, entities, status }"]
+    Store --&gt;|"useAppSelector"| Component</code></pre>
+<h3 id="adminslice-thunks">adminSlice thunks<a class="headerlink" href="#adminslice-thunks" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Thunk</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fetchRecords</code></td>
+<td>Load all rows for a module into entity adapter</td>
+</tr>
+<tr>
+<td><code>fetchRecord</code></td>
+<td>Load a single row into <code>current</code></td>
+</tr>
+<tr>
+<td><code>createRecord</code></td>
+<td>Insert new row, add to entity state</td>
+</tr>
+<tr>
+<td><code>updateRecord</code></td>
+<td>Update existing row, upsert in entity state</td>
+</tr>
+<tr>
+<td><code>deleteRecord</code></td>
+<td>S3 image cleanup + delete row, remove from entity state</td>
+</tr>
+<tr>
+<td><code>fetchModuleCounts</code></td>
+<td>Parallel <code>count</code> queries for all modules + featured count</td>
+</tr>
+</tbody>
+</table>
+<p>Entity state is updated optimistically after every mutation — the table reflects changes immediately without a re-fetch.</p>
 <hr />
 <h2 id="auth-guard-flow">Auth guard flow<a class="headerlink" href="#auth-guard-flow" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>flowchart TD
@@ -1537,7 +1638,7 @@
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>src/
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  pages/
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    AdminDashboard.tsx       ← layout shell (sidebar + route switch)
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    Login.tsx                ← email + password sign-in
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    Login.tsx                ← Supabase email + password sign-in
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  components/
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    ProtectedRoute.tsx       ← auth guard
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>  features/admin/
@@ -1545,17 +1646,25 @@
 </span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>      modules.tsx            ← MODULES array — all module + field definitions
 </span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    components/
 </span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>      AdminSidebar.tsx       ← desktop sticky + mobile drawer nav
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>      AdminOverview.tsx      ← dashboard charts (Recharts)
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>      AdminDataTable.tsx     ← list table + search + sort + column config
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>      AdminCrudForm.tsx      ← dynamic form with all 12 field types
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>      AdminSettings.tsx      ← settings tabs + Tables/Forms builders
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>  lib/
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>    supabase.ts              ← Supabase client singleton
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    imageUpload.ts           ← upload / replace / delete + moduleFolder()
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>  store/
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>    authSlice.ts             ← login / signOut thunks + user state
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>  app/
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>    providers.tsx            ← onAuthStateChange listener
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>      AdminOverview.tsx      ← dashboard charts — counts via Redux fetchModuleCounts
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>      AdminDataTable.tsx     ← thin wrapper: reads moduleId from URL, renders CrudTable
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>      CrudTable.tsx          ← reusable table (react-data-table-component)
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>                                search · pagination · sort · image column
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>                                Supabase-driven column config via table_config
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>      AdminCrudForm.tsx      ← dynamic form — all 12 field types
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>                                record load/save/delete via Redux adminSlice
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>      AdminSettings.tsx      ← settings tabs + Tables/Forms builders
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>  lib/
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>    supabase.ts              ← Supabase client singleton
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>    imageUpload.ts           ← upload / replace / delete + moduleFolder()
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>  store/
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>    adminSlice.ts            ← createEntityAdapter + 6 async thunks (admin CRUD)
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>    authSlice.ts             ← login / signOut thunks + user state
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>  shared/
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>    types/
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>      tableConfig.ts         ← TableColumnConfig + TableConfig interfaces
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>  app/
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>    providers.tsx            ← onAuthStateChange listener
 </span></code></pre></div>
 
 
