@@ -16,6 +16,27 @@ The **Tables** tab in Admin Settings lets you customise each module's list table
 | `width`    | string            | auto    | Fixed CSS width e.g. `"120px"` (omit = flex grow) |
 | `height`   | string            | auto    | Fixed cell height e.g. `"48px"`                    |
 | `align`    | left/center/right | left    | Cell and header text alignment                     |
+| `link`     | string            | —       | URL template — use `${fieldName}` for dynamic row values, e.g. `/admin/services/${service_id}` |
+
+### Column links
+
+Set `link` to a URL template to make a column's cell clickable. Use `${fieldName}` placeholders — they are replaced with the corresponding row value at render time.
+
+```json
+{ "field": "service_id", "title": "Service", "link": "/admin/services/${service_id}" }
+```
+
+Clicking the cell navigates to the resolved URL and stops the row-click event from also firing. The cell still shows the resolved display label (e.g. the service name resolved via the relation map).
+
+You can reference any field in the row, not just the column's own field:
+
+```json
+{ "field": "title", "title": "Project", "link": "/admin/projects/${id}" }
+```
+
+**Configure in Settings UI:** Settings → Tables → pick a module → expand a column row (chevron button) → enter the Link URL.
+
+---
 
 ### Per-table pagination
 
@@ -168,6 +189,7 @@ export interface TableColumnConfig {
   width?: string;      // fixed width e.g. "120px"
   height?: string;     // fixed cell height e.g. "48px"
   align?: 'left' | 'center' | 'right';
+  link?: string;       // URL template — use ${fieldName} for row values
 }
 
 export interface TableConfig {
