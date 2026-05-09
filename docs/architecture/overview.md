@@ -16,9 +16,10 @@ flowchart TB
             P4["/about · /contact"]
         end
         subgraph AdminPanel["Admin Panel  /admin/*"]
-            Table["AdminDataTable\nlist + search + sort"]
+            Table["CrudTable\nreact-data-table-component\nsearch · sort · pagination"]
             Form["AdminCrudForm\ndynamic field renderer"]
             Settings["AdminSettings\nTables · Forms config"]
+            AdminStore["Redux adminSlice\ncreateEntityAdapter\nfetchRecords · createRecord\nupdateRecord · deleteRecord"]
         end
     end
 
@@ -35,7 +36,7 @@ flowchart TB
     end
 
     Pages      -- "supabase.from().select()" --> PG
-    AdminPanel -- "supabase.from().upsert()" --> PG
+    AdminPanel -- "adminSlice thunks\nfetch · create · update · delete" --> PG
     AdminPanel -- "read/write config" --> Config
     AdminPanel -- "signInWithPassword()" --> SupaAuth
     SupaAuth   -- "JWT session" --> AdminPanel

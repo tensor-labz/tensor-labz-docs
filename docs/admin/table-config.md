@@ -1,16 +1,33 @@
 # Dynamic Table Column Config
 
-The **Tables** section in Admin Settings lets you customise each module's list table without touching code.
+The **Tables** tab in Admin Settings lets you customise each module's list table without touching code. Configuration is stored in Supabase and read by the `CrudTable` component at runtime.
 
 ---
 
 ## What you can configure per column
 
-| Setting | Options               | Description                         |
-| ------- | --------------------- | ----------------------------------- |
-| Label   | free text             | Column header shown in the table    |
-| Visible | on / off              | Hide a column without deleting it   |
-| Align   | Left / Centre / Right | Text alignment for header and cells |
+| Setting    | Type              | Default | Description                                       |
+| ---------- | ----------------- | ------- | ------------------------------------------------- |
+| `label`    | string            | key     | Column header shown in the table                  |
+| `visible`  | boolean           | `true`  | Hide a column without removing it from config     |
+| `sortable` | boolean           | `true`  | Enable/disable column sort click                  |
+| `order`    | number            | —       | Display order — lower numbers appear first        |
+| `width`    | string            | auto    | Fixed CSS width e.g. `"120px"` (omit = flex grow)|
+| `align`    | left/center/right | left    | Cell and header text alignment                    |
+
+### Per-table pagination
+
+| Setting     | Type    | Default | Description                |
+| ----------- | ------- | ------- | -------------------------- |
+| `page_size` | integer | `20`    | Rows shown per page        |
+
+`page_size` is a separate integer column on `table_config`. Add it with:
+
+```sql
+alter table table_config add column if not exists page_size integer;
+```
+
+Valid row-per-page options the user can switch to in the table footer: **10 / 20 / 50 / 100**.
 
 ---
 
@@ -18,9 +35,10 @@ The **Tables** section in Admin Settings lets you customise each module's list t
 
 1. Go to `/admin/settings` → **Tables** tab
 2. Pick a module from the tabs at the top
-3. Adjust label, visibility, and alignment for each column
-4. Click **Save Changes**
-5. The list table at `/admin/<module>` updates immediately on next load
+3. Adjust label, visibility, sort, order, and alignment per column
+4. Set **Rows per page** if you need a non-default value
+5. Click **Save Changes**
+6. The list table at `/admin/<module>` updates on next load
 
 **Reset to defaults** restores the column config derived from the static `MODULES` definition.
 
@@ -28,7 +46,7 @@ The **Tables** section in Admin Settings lets you customise each module's list t
 
 ## Storage (`table_config` table)
 
-Each module config is stored as a single JSONB row:
+Each module config is a single row:
 
 ```sql
 select * from table_config where module_id = 'projects';
@@ -37,25 +55,18 @@ select * from table_config where module_id = 'projects';
 ```json
 {
   "module_id": "projects",
+  "page_size": 20,
   "columns": [
-    { "key": "imageurl", "label": "Cover", "visible": true, "align": "left" },
-    {
-      "key": "title",
-      "label": "Project Name",
-      "visible": true,
-      "align": "left"
-    },
-    {
-      "key": "description",
-      "label": "Summary",
-      "visible": false,
-      "align": "left"
-    }
+    { "key": "imageURL",     "label": "Cover",        "visible": true,  "sortable": false, "order": 0 },
+    { "key": "title",        "label": "Project Name",  "visible": true,  "sortable": true,  "order": 1 },
+    { "key": "slug",         "label": "Slug",          "visible": true,  "sortable": true,  "order": 2, "width": "140px" },
+    { "key": "description",  "label": "Summary",       "visible": false, "sortable": false, "order": 3 },
+    { "key": "is_top",       "label": "Featured",      "visible": true,  "sortable": true,  "order": 4, "width": "90px", "align": "center" }
   ]
 }
 ```
 
-Setting `visible: false` on the description column hides that column entirely from the table view.
+Setting `visible: false` hides the column entirely. It still exists in the config and can be re-enabled later.
 
 ---
 
@@ -63,53 +74,93 @@ Setting `visible: false` on the description column hides that column entirely fr
 
 ```mermaid
 flowchart TD
-    Load(["module changes"]) --> Fetch["fetch table_config\nwhere module_id = moduleId"]
+    Load(["module changes"]) --> Fetch["CrudTable fetches\ntable_config where module_id = moduleId\nselect('*')"]
     Fetch --> Has{row exists?}
-    Has -->|"Yes"| Apply["apply custom\nlabels · visible · align"]
-    Has -->|"No"| Default["use module defaults\nfrom MODULES array"]
-    Apply --> Render["render table\nwith merged config"]
-    Default --> Render
+    Has -->|"Yes"| Apply["apply columns config\nvisible · sortable · order\nwidth · align · page_size"]
+    Has -->|"No"| Default["fallback to MODULES array\ntitleField · descriptionField\ndefault page_size = 20"]
+    Apply --> Redux["dispatch fetchRecords(moduleId)\nif status = 'idle'"]
+    Default --> Redux
+    Redux --> Render["CrudTable renders\nreact-data-table-component"]
 ```
 
-## How `AdminDataTable` applies the config
+---
 
-On module load, the table fetches the config:
+## How `CrudTable` applies the config
+
+`CrudTable` (`src/features/admin/components/CrudTable.tsx`) reads both column config and pagination from Supabase on module change:
 
 ```typescript
 supabase
   .from('table_config')
-  .select('columns')
+  .select('*')
   .eq('module_id', moduleId)
   .maybeSingle()
   .then(({ data }) => {
-    if (data?.columns) setColConfig(data.columns);
+    if (data?.columns)   setColConfig(data.columns as TableColumnConfig[]);
+    if (data?.page_size) setPageSize(data.page_size as number);
   });
 ```
 
-Then for each column it derives:
+Columns are then built for `react-data-table-component`:
 
 ```typescript
-const imgVisible =
-  colConfig?.find((c) => c.key === mod.imageField)?.visible ?? true;
-const titleLabel =
-  colConfig?.find((c) => c.key === mod.titleField)?.label ?? 'Title';
-const titleAlign =
-  colConfig?.find((c) => c.key === mod.titleField)?.align ?? 'left';
+[...colConfig]
+  .filter((c) => c.visible !== false)
+  .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+  .forEach((c) => {
+    cols.push({
+      id: c.key,
+      name: c.label,
+      selector: (row) => String(row[c.key] ?? ''),
+      sortable: c.sortable ?? true,
+      ...(c.width ? { width: c.width } : { grow: 1 }),
+    });
+  });
 ```
 
-If no config exists for the module, all defaults apply (visible, "Title" / "Description" labels, left-aligned).
+Image column is always inserted first if the module defines an `imageField`. The edit-action column is always last.
 
 ---
 
 ## Required Supabase table
 
 ```sql
-create table table_config (
+create table if not exists table_config (
   id        bigint generated always as identity primary key,
   module_id text   not null unique,
-  columns   jsonb  not null default '[]'
+  columns   jsonb  not null default '[]',
+  page_size integer
 );
+
 alter table table_config enable row level security;
-create policy "public read"  on table_config for select using (true);
-create policy "admin write"  on table_config for all    using (auth.role() = 'authenticated');
+
+create policy "public read"
+  on table_config for select using (true);
+
+create policy "admin write"
+  on table_config for all using (auth.role() = 'authenticated');
+```
+
+---
+
+## TypeScript type reference
+
+```typescript
+// src/shared/types/tableConfig.ts
+
+export interface TableColumnConfig {
+  key: string;
+  label: string;
+  visible?: boolean;   // default true
+  sortable?: boolean;  // default true
+  order?: number;      // display order
+  width?: string;      // e.g. "120px"
+  align?: 'left' | 'center' | 'right';
+}
+
+export interface TableConfig {
+  module_id: string;
+  columns: TableColumnConfig[];
+  page_size?: number;  // default 20
+}
 ```

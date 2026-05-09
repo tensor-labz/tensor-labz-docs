@@ -12,7 +12,7 @@ flowchart LR
     Root --> Users["/admin/users\nAdminUsers"]
     Root --> Billing["/admin/billing\nAdminBilling"]
     Root --> Settings["/admin/settings\nAdminSettings"]
-    Root --> Module["/admin/:module\nAdminDataTable\nlist + search + sort"]
+    Root --> Module["/admin/:module\nAdminDataTable → CrudTable\nreact-data-table-component"]
     Module --> Record["/admin/:module/:id\nAdminCrudForm\nedit record"]
     Module --> New["/admin/:module/new\nAdminCrudForm\ncreate record"]
 
@@ -26,7 +26,35 @@ flowchart LR
 ```
 
 !!! important "Route ordering"
-`users`, `billing`, and `settings` must be declared **before** the `:module` catch-all in `AdminDashboard.tsx`. Without this, React Router matches them as module names.
+    `users`, `billing`, and `settings` must be declared **before** the `:module` catch-all in `AdminDashboard.tsx`. Without this, React Router matches them as module names.
+
+---
+
+## Redux data flow for admin CRUD
+
+All admin data operations go through **Redux Toolkit** — no direct Supabase calls in admin components.
+
+```mermaid
+flowchart LR
+    Component["Admin component\n(CrudTable / AdminCrudForm\n/ AdminOverview)"] -->|"dispatch thunk"| Slice["adminSlice\ncreateEntityAdapter\ncreateAsyncThunk"]
+    Slice -->|"supabase.from()"| DB["Supabase\nPostgreSQL"]
+    DB --> Slice
+    Slice -->|"entity state update"| Store["Redux store\nmodules[moduleId]\n{ ids, entities, status }"]
+    Store -->|"useAppSelector"| Component
+```
+
+### adminSlice thunks
+
+| Thunk               | What it does                                              |
+| ------------------- | --------------------------------------------------------- |
+| `fetchRecords`      | Load all rows for a module into entity adapter            |
+| `fetchRecord`       | Load a single row into `current`                          |
+| `createRecord`      | Insert new row, add to entity state                       |
+| `updateRecord`      | Update existing row, upsert in entity state               |
+| `deleteRecord`      | S3 image cleanup + delete row, remove from entity state   |
+| `fetchModuleCounts` | Parallel `count` queries for all modules + featured count |
+
+Entity state is updated optimistically after every mutation — the table reflects changes immediately without a re-fetch.
 
 ---
 
@@ -74,7 +102,7 @@ flowchart LR
 src/
   pages/
     AdminDashboard.tsx       ← layout shell (sidebar + route switch)
-    Login.tsx                ← email + password sign-in
+    Login.tsx                ← Supabase email + password sign-in
   components/
     ProtectedRoute.tsx       ← auth guard
   features/admin/
@@ -82,15 +110,23 @@ src/
       modules.tsx            ← MODULES array — all module + field definitions
     components/
       AdminSidebar.tsx       ← desktop sticky + mobile drawer nav
-      AdminOverview.tsx      ← dashboard charts (Recharts)
-      AdminDataTable.tsx     ← list table + search + sort + column config
-      AdminCrudForm.tsx      ← dynamic form with all 12 field types
+      AdminOverview.tsx      ← dashboard charts — counts via Redux fetchModuleCounts
+      AdminDataTable.tsx     ← thin wrapper: reads moduleId from URL, renders CrudTable
+      CrudTable.tsx          ← reusable table (react-data-table-component)
+                                search · pagination · sort · image column
+                                Supabase-driven column config via table_config
+      AdminCrudForm.tsx      ← dynamic form — all 12 field types
+                                record load/save/delete via Redux adminSlice
       AdminSettings.tsx      ← settings tabs + Tables/Forms builders
   lib/
     supabase.ts              ← Supabase client singleton
     imageUpload.ts           ← upload / replace / delete + moduleFolder()
   store/
+    adminSlice.ts            ← createEntityAdapter + 6 async thunks (admin CRUD)
     authSlice.ts             ← login / signOut thunks + user state
+  shared/
+    types/
+      tableConfig.ts         ← TableColumnConfig + TableConfig interfaces
   app/
     providers.tsx            ← onAuthStateChange listener
 ```
