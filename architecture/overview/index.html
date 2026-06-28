@@ -795,6 +795,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Frontend page composition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#detail-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detail pages
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1745,6 +1762,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Frontend page composition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#detail-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detail pages
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1962,6 +1996,39 @@
 <ul>
 <li><strong>Services page</strong> is URL-driven: the active service comes from the route <code>:slug</code> (loads the correct list immediately on entry/refresh/back-forward), search uses <code>?q</code>, paging uses <code>?page</code>, and the filter is a left slide-in drawer in <code>ContentPage</code>'s <code>sidebar</code> slot. <code>/services</code> shows all; <code>/services/:slug</code> filters — no <code>/services/all</code> redirect.</li>
 <li><code>ServiceCard</code> (home page service-category card) is separate from these content components.</li>
+</ul>
+<h3 id="detail-pages">Detail pages<a class="headerlink" href="#detail-pages" title="Permanent link">&para;</a></h3>
+<p>The single-item pages (post detail, project detail) share one composition the same way the list pages share <code>ContentPage</code>:</p>
+<pre class="mermaid"><code>flowchart TB
+    DP["page (PostDetail / Project)\nmaps data → props"] --&gt; DPC["DetailsPage"]
+    DPC --&gt; Hero["hero: cover display frame\n+ metadata column\n(kicker · title · tags · meta)"]
+    DPC --&gt; Badge["titleBadge (optional)\ne.g. project crown"]
+    DPC --&gt; Act["actions (optional)\ne.g. Get-Support / contact"]
+    DPC --&gt; Body["rich-text body (DOMPurify)"]
+    DPC --&gt; MG["MediaGallery (children)\nvideo players + image viewer\n+ thumbnail strip"]
+    DPC --&gt; Share["social share row"]</code></pre>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DetailsPage</code></td>
+<td>Detail composition: cover frame + metadata hero, body, share; optional <code>titleBadge</code> / <code>actions</code> / media <code>children</code> slots</td>
+</tr>
+<tr>
+<td><code>MediaGallery</code></td>
+<td>Generic media set (<code>MediaItem[]</code>) — videos + image viewer with thumbnails</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong><code>PostDetail</code></strong> feeds post data + <code>additional_media</code> into <code>MediaGallery</code>; cover supports image / YouTube / video (player embedded).</li>
+<li><strong><code>Project</code></strong> reuses <code>DetailsPage</code> with the crown via <code>titleBadge</code>, Get-Support/contact via <code>actions</code>, and <code>extraImages</code> via <code>MediaGallery</code>.</li>
+<li><code>coverThumbnail(url, type)</code> (<code>postService</code>) turns a YouTube cover link into a still thumbnail for list cards.</li>
 </ul>
 <hr />
 <h2 id="key-design-decisions">Key design decisions<a class="headerlink" href="#key-design-decisions" title="Permanent link">&para;</a></h2>
