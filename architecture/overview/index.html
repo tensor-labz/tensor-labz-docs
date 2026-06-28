@@ -787,6 +787,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#frontend-page-composition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Frontend page composition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#key-design-decisions" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1726,6 +1737,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#frontend-page-composition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Frontend page composition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#key-design-decisions" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1810,8 +1832,9 @@
         SPA["React 18 SPA\nVite · TypeScript · Tailwind\nRedux Toolkit"]
         subgraph Pages["Public Pages"]
             P1["/ Hero"]
-            P2["/services"]
-            P3["/projects"]
+            P2["/services · /services/:slug"]
+            P3["/project/:slug"]
+            P5["/posts · /posts/:slug"]
             P4["/about · /contact"]
         end
         subgraph AdminPanel["Admin Panel  /admin/*"]
@@ -1896,6 +1919,50 @@
     Lambda--&gt;&gt;Admin: { uploadUrl, publicUrl, key }
 
     Admin-&gt;&gt;S3: PUT &lt;uploadUrl&gt;  (new binary file)</code></pre>
+<hr />
+<h2 id="frontend-page-composition">Frontend page composition<a class="headerlink" href="#frontend-page-composition" title="Permanent link">&para;</a></h2>
+<p>The list pages (posts, services) are built from one reusable, data-driven set in <code>src/shared/components/</code> — there are no per-page card/list/pagination/hero components.</p>
+<pre class="mermaid"><code>flowchart TB
+    Page["page (Posts / Services)\nmaps data → props"] --&gt; CP["ContentPage"]
+    CP --&gt; CH["ContentHeader\neyebrow · title · search · glow\n(sticky)"]
+    CP --&gt; SB["sidebar (optional)\ne.g. ServiceFilterDrawer"]
+    CP --&gt; CL["ContentList\nloading / empty slots"]
+    CL --&gt; CC["ContentCard ×N\nid · title · imgUrl · tags\ndescription · link · created_at"]
+    CP --&gt; PG["ContentPagination\npage · totalPages · onPageChange"]</code></pre>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ContentPage</code></td>
+<td>Composes header + optional sidebar + list + pagination from props</td>
+</tr>
+<tr>
+<td><code>ContentHeader</code></td>
+<td>Sticky page header (search, glow); publishes height as <code>--page-header-h</code></td>
+</tr>
+<tr>
+<td><code>ContentCard</code></td>
+<td>Normalized content card; uniform height with image fill</td>
+</tr>
+<tr>
+<td><code>ContentList</code></td>
+<td>Vertical card list with loading/empty states</td>
+</tr>
+<tr>
+<td><code>ContentPagination</code></td>
+<td>Controlled prev/next + numbered paging</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Services page</strong> is URL-driven: the active service comes from the route <code>:slug</code> (loads the correct list immediately on entry/refresh/back-forward), search uses <code>?q</code>, paging uses <code>?page</code>, and the filter is a left slide-in drawer in <code>ContentPage</code>'s <code>sidebar</code> slot. <code>/services</code> shows all; <code>/services/:slug</code> filters — no <code>/services/all</code> redirect.</li>
+<li><code>ServiceCard</code> (home page service-category card) is separate from these content components.</li>
+</ul>
 <hr />
 <h2 id="key-design-decisions">Key design decisions<a class="headerlink" href="#key-design-decisions" title="Permanent link">&para;</a></h2>
 <table>

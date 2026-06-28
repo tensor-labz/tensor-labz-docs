@@ -1875,12 +1875,12 @@
 </table>
 <hr />
 <h2 id="branch-strategy">Branch strategy<a class="headerlink" href="#branch-strategy" title="Permanent link">&para;</a></h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>feat/* ──► dev ──► staging ──► main
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                     │              │
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>               Firebase          AWS Amplify
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>               (staging QA)      (production)
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>fix/* · feat/* · refactor/* ──► staging ──► main
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                                   │            │
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>                              Firebase       AWS Amplify
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>                              (staging QA)   (production)
 </span></code></pre></div>
-<p>All development happens on <code>feat/*</code> branches → <code>dev</code>. When ready for QA, merge <code>dev → staging</code> (deploys to Firebase). When approved, merge <code>staging → main</code> (Amplify auto-deploys to production).</p>
+<p>Branch off <code>staging</code> for any work, then open a PR into <code>staging</code> (deploys to Firebase for QA). When approved, merge <code>staging → main</code> (Amplify auto-deploys to production). Enforced by <code>enforce-flow.yml</code>: any branch may target <code>staging</code>, but <code>main</code> only accepts PRs from <code>staging</code>.</p>
 <hr />
 <h2 id="documentation-sections">Documentation sections<a class="headerlink" href="#documentation-sections" title="Permanent link">&para;</a></h2>
 <ul>

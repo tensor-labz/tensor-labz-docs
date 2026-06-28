@@ -1806,7 +1806,7 @@
 <hr />
 <h2 id="deploy-flow">Deploy flow<a class="headerlink" href="#deploy-flow" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>flowchart LR
-    Dev["dev branch\n(local changes)"] -- "PR merge" --&gt; Staging["staging branch"]
+    Feat["feature branch\n(fix/* · feat/* · refactor/*)"] -- "PR merge" --&gt; Staging["staging branch"]
     Staging -- "npm run deploy:staging" --&gt; Build["npm run build\ntsc -b &amp;&amp; vite build"]
     Build -- "dist/" --&gt; Firebase["Firebase Hosting\nCDN upload"]
     Firebase -- "live at" --&gt; URL["tensor-labz-website.web.app"]</code></pre>
