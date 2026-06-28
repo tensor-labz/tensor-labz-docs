@@ -142,6 +142,30 @@ flowchart TB
 - **Services page** is URL-driven: the active service comes from the route `:slug` (loads the correct list immediately on entry/refresh/back-forward), search uses `?q`, paging uses `?page`, and the filter is a left slide-in drawer in `ContentPage`'s `sidebar` slot. `/services` shows all; `/services/:slug` filters — no `/services/all` redirect.
 - `ServiceCard` (home page service-category card) is separate from these content components.
 
+### Detail pages
+
+The single-item pages (post detail, project detail) share one composition the same way the list pages share `ContentPage`:
+
+```mermaid
+flowchart TB
+    DP["page (PostDetail / Project)\nmaps data → props"] --> DPC["DetailsPage"]
+    DPC --> Hero["hero: cover display frame\n+ metadata column\n(kicker · title · tags · meta)"]
+    DPC --> Badge["titleBadge (optional)\ne.g. project crown"]
+    DPC --> Act["actions (optional)\ne.g. Get-Support / contact"]
+    DPC --> Body["rich-text body (DOMPurify)"]
+    DPC --> MG["MediaGallery (children)\nvideo players + image viewer\n+ thumbnail strip"]
+    DPC --> Share["social share row"]
+```
+
+| Component     | Role                                                                       |
+| ------------- | -------------------------------------------------------------------------- |
+| `DetailsPage` | Detail composition: cover frame + metadata hero, body, share; optional `titleBadge` / `actions` / media `children` slots |
+| `MediaGallery`| Generic media set (`MediaItem[]`) — videos + image viewer with thumbnails  |
+
+- **`PostDetail`** feeds post data + `additional_media` into `MediaGallery`; cover supports image / YouTube / video (player embedded).
+- **`Project`** reuses `DetailsPage` with the crown via `titleBadge`, Get-Support/contact via `actions`, and `extraImages` via `MediaGallery`.
+- `coverThumbnail(url, type)` (`postService`) turns a YouTube cover link into a still thumbnail for list cards.
+
 ---
 
 ## Key design decisions
