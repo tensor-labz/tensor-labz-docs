@@ -16,22 +16,21 @@ Production deploys automatically when code is pushed to the `main` branch.
 ```mermaid
 gitGraph
    commit id: "initial setup"
-   branch dev
-   checkout dev
-   commit id: "feat: hero section"
-   commit id: "fix: mobile nav"
    branch staging
    checkout staging
-   merge dev id: "PR: dev → staging"
-   checkout dev
-   commit id: "feat: admin panel"
+   branch feat/hero
+   checkout feat/hero
+   commit id: "feat: hero section"
    checkout staging
-   merge dev id: "PR: dev → staging (2)"
+   merge feat/hero id: "PR: feat → staging"
+   branch fix/mobile-nav
+   checkout fix/mobile-nav
+   commit id: "fix: mobile nav"
+   checkout staging
+   merge fix/mobile-nav id: "PR: fix → staging"
    branch main
    checkout main
    merge staging id: "PR: staging → main 🚀"
-   checkout dev
-   commit id: "feat: next feature"
 ```
 
 ---
@@ -41,10 +40,10 @@ gitGraph
 ```mermaid
 flowchart LR
     subgraph Dev["Developer machine"]
-        Code["code changes\non dev branch"]
+        Code["code changes\non a feature branch"]
     end
     subgraph GitHub
-        DevB["dev branch"]
+        FeatB["feature branch\nfix/* · feat/* · refactor/*"]
         StagingB["staging branch"]
         MainB["main branch"]
     end
@@ -53,8 +52,8 @@ flowchart LR
         Amplify["AWS Amplify\ntensorlabz.com\n(production)"]
     end
 
-    Code -- "push" --> DevB
-    DevB -- "PR merge" --> StagingB
+    Code -- "push" --> FeatB
+    FeatB -- "PR merge" --> StagingB
     StagingB -- "webhook" --> Firebase
     StagingB -- "PR merge (after QA)" --> MainB
     MainB -- "webhook" --> Amplify
