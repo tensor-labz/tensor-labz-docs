@@ -75,13 +75,13 @@ flowchart TB
 ## Branch strategy
 
 ```
-feat/* ──► dev ──► staging ──► main
-                     │              │
-               Firebase          AWS Amplify
-               (staging QA)      (production)
+fix/* · feat/* · refactor/* ──► staging ──► main
+                                   │            │
+                              Firebase       AWS Amplify
+                              (staging QA)   (production)
 ```
 
-All development happens on `feat/*` branches → `dev`. When ready for QA, merge `dev → staging` (deploys to Firebase). When approved, merge `staging → main` (Amplify auto-deploys to production).
+Branch off `staging` for any work, then open a PR into `staging` (deploys to Firebase for QA). When approved, merge `staging → main` (Amplify auto-deploys to production). Enforced by `enforce-flow.yml`: any branch may target `staging`, but `main` only accepts PRs from `staging`.
 
 ---
 

@@ -11,8 +11,9 @@ flowchart TB
         SPA["React 18 SPA\nVite · TypeScript · Tailwind\nRedux Toolkit"]
         subgraph Pages["Public Pages"]
             P1["/ Hero"]
-            P2["/services"]
-            P3["/projects"]
+            P2["/services · /services/:slug"]
+            P3["/project/:slug"]
+            P5["/posts · /posts/:slug"]
             P4["/about · /contact"]
         end
         subgraph AdminPanel["Admin Panel  /admin/*"]
@@ -113,6 +114,33 @@ sequenceDiagram
 
     Admin->>S3: PUT <uploadUrl>  (new binary file)
 ```
+
+---
+
+## Frontend page composition
+
+The list pages (posts, services) are built from one reusable, data-driven set in `src/shared/components/` — there are no per-page card/list/pagination/hero components.
+
+```mermaid
+flowchart TB
+    Page["page (Posts / Services)\nmaps data → props"] --> CP["ContentPage"]
+    CP --> CH["ContentHeader\neyebrow · title · search · glow\n(sticky)"]
+    CP --> SB["sidebar (optional)\ne.g. ServiceFilterDrawer"]
+    CP --> CL["ContentList\nloading / empty slots"]
+    CL --> CC["ContentCard ×N\nid · title · imgUrl · tags\ndescription · link · created_at"]
+    CP --> PG["ContentPagination\npage · totalPages · onPageChange"]
+```
+
+| Component          | Role                                                                  |
+| ------------------ | -------------------------------------------------------------------- |
+| `ContentPage`      | Composes header + optional sidebar + list + pagination from props    |
+| `ContentHeader`    | Sticky page header (search, glow); publishes height as `--page-header-h` |
+| `ContentCard`      | Normalized content card; uniform height with image fill              |
+| `ContentList`      | Vertical card list with loading/empty states                        |
+| `ContentPagination`| Controlled prev/next + numbered paging                              |
+
+- **Services page** is URL-driven: the active service comes from the route `:slug` (loads the correct list immediately on entry/refresh/back-forward), search uses `?q`, paging uses `?page`, and the filter is a left slide-in drawer in `ContentPage`'s `sidebar` slot. `/services` shows all; `/services/:slug` filters — no `/services/all` redirect.
+- `ServiceCard` (home page service-category card) is separate from these content components.
 
 ---
 

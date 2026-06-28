@@ -14,7 +14,7 @@ Staging is deployed to Firebase Hosting on every merge to the `staging` branch.
 
 ```mermaid
 flowchart LR
-    Dev["dev branch\n(local changes)"] -- "PR merge" --> Staging["staging branch"]
+    Feat["feature branch\n(fix/* · feat/* · refactor/*)"] -- "PR merge" --> Staging["staging branch"]
     Staging -- "npm run deploy:staging" --> Build["npm run build\ntsc -b && vite build"]
     Build -- "dist/" --> Firebase["Firebase Hosting\nCDN upload"]
     Firebase -- "live at" --> URL["tensor-labz-website.web.app"]
